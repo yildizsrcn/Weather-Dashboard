@@ -10,3 +10,72 @@ body{
 .weather-header{
     margin: 20px;
 }
+
+.form-input{
+    padding: 10px;
+    font-size: 2rem;
+    font-weight: bold;
+    border: 2px solid lightsteelblue;
+    border-radius: 10px;
+    margin: 10px;
+    width: 300px;
+}
+
+button[type="submit"]{
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 2rem;
+    background-color: lightskyblue;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover{
+    background-color: green; 
+
+}
+.card{
+    background: linear-gradient(180deg,lightblue,yellow);
+    padding: 50px;
+    box-shadow: 2px 2px 5px ;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1{
+    font-size: 3rem;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+p{
+    font-size: 1.5rem;
+    margin: 5px 0;
+}
+
+.cityDisplay, .tempDisplay {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 25px;
+
+}
+
+.humidityDisplay {
+    font-weight: bold;
+    margin-bottom: 25px;
+
+}
+
+.descDisplay {
+    font-weight: bold;
+    font-style: italic;
+}
+
+.weatherIcon{
+    margin: 0;
+    font-size: 7.5rem;
+}
