@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <link rel="stylesheet" href="styles/reset.css" />
+  <link rel="stylesheet" href="./css/style.css" />
   <title>Weather Dashboard</title>
 </head>
 
@@ -24,7 +24,7 @@
         <form id="search-form" class="form">
           <div class="form-inline form-group">
             <div class="input-group">
-              <input class="form-input weather-search" type="text" id="search-input" placeholder="London"
+              <input class="form-input weather-search" type="text" id="search-input" placeholder="Enter a City"
                 aria-labelledby="form-heading" aria-controls="today forecast" />
               <div class="input-group-append">
                 <button type="submit" class="btn search-button" id="search-button" aria-label="submit search">
@@ -35,6 +35,14 @@
             </div>
           </div>
         </form>
+  <div class="card">
+    <h1 class="cityDisplay">London</h1>
+    <p class="tempDisplay">90 C</p>
+    <p class="humidityDisplay">Humidity: 75%</p>
+    <p class="descDisplay">Clear Skies</p>
+    <p class="weatherIcon">☀️</p>
+    <p class="errorDisplay">Please enter a City</p>
+  </div>
         <div class="list-group" id="history"></div>
       </aside>
 
