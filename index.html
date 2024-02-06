@@ -10,8 +10,11 @@
 </head>
 
 <body>
-  <header class="container-fluid text-center text-white bg-dark p-2 weather-header">
+  <header class="container-fluid text-center text-white bg-dark p-2 weatherHeader">
     <h1>Weather Dashboard</h1>
+    <h2> Today is: </h2>
+    <h5 id="date"></h5>
+    <h6 id="time"></h6>
   </header>
 
   <!-- max-width for ultra wide resolutions -->
@@ -24,7 +27,7 @@
         <form id="search-form" class="form">
           <div class="form-inline form-group">
             <div class="input-group">
-              <input class="form-input weather-search" type="text" id="search-input" placeholder="Enter a City"
+              <input class="formInput weather-search" type="text" id="search-input" placeholder="Enter a City"
                 aria-labelledby="form-heading" aria-controls="today forecast" />
               <div class="input-group-append">
                 <button type="submit" class="btn search-button" id="search-button" aria-label="submit search">
@@ -35,13 +38,15 @@
             </div>
           </div>
         </form>
-  <div class="card">
-    <h1 class="cityDisplay">London</h1>
-    <p class="tempDisplay">90°C</p>
-    <p class="humidityDisplay">Humidity: 75%</p>
+  <div class="card" style="display: none">    
+    <!-- <h1 class="cityDisplay"></h1>
+    <p class="tempDisplay"> °C</p>
+    <p class="humidityDisplay">Humidity: </p>
     <p class="descDisplay">Clear Skies</p>
     <p class="weatherIcon">☀️</p>
+    <p class="windSpeedDisplay"> km/h</p>
     <p class="errorDisplay">Please enter a City</p>
+ -->
   </div>
         <div class="list-group" id="history"></div>
       </aside>
@@ -57,7 +62,8 @@
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
   <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="script.js"></script>
-</body>
+  <div id="openweathermap-widget-11"></div>
+  <script src="./assets/script.js"></script>
+  </body>
 
 </html>
