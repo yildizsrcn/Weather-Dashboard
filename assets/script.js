@@ -41,8 +41,6 @@ async function getWeatherData(city){
 
     console.log(data);
     return data;
-    
-
 }
 
 
@@ -52,11 +50,11 @@ function displayWeatherInfo(data){
     const {
         name: city, 
         main: {temp , humidity}, 
-        weather :[{icon,description,id}],
+        weather :[{description,icon,id}],
         wind: {speed},
     } =data;
-    
-    const iconUrl =  `https://api.openweathermap.org/img/wn/${icon}.png`
+console.log(data);
+    const iconUrl =  `https://api.openweathermap.org/img/w/${data.weather[0].icon}.png`
     const iconImg=`<img src="${iconUrl}" />`
 
     card.textContent ="";
@@ -69,13 +67,13 @@ function displayWeatherInfo(data){
     const descDisplay = document.createElement("p");
     const weatherIcon = document.createElement("div");
 
-    weatherIcon.innerHTML=iconImg;
+    weatherIcon.innerHTML = iconImg;
     cityDisplay.textContent =city;
     tempDisplay.textContent = `${(temp -273.15).toFixed(1)}°C`;
     humidityDisplay.textContent = `Humidity: ${humidity}`;
     windSpeedDisplay.textContent = `Wind: ${speed} km/h`;
     descDisplay.textContent = description;
-    weatherIcon.textContent = getWeatherIcon(id);
+
 
 
     cityDisplay.classList.add("cityDisplay");
