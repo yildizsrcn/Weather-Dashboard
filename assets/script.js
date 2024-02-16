@@ -58,7 +58,7 @@ function displayWeatherInfo(data){
 console.log(data);
     const currentDate =new Date(data.dt).toLocaleDateString().split(",")[0]
     console.log(currentDate);
-    const iconUrl =  `https://api.openweathermap.org/img/w/${data.weather[0].icon}.png`
+    const iconUrl =  `http://openweathermap.org/img/wn/${icon}@2x.png`
     const iconImg=`<img src="${iconUrl}" />`
 
     card.textContent ="";
