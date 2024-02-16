@@ -36,7 +36,8 @@ button[type="submit"]:hover{
 
 }
 .card{
-    background: linear-gradient(180deg,lightblue,yellow);
+    /* background: linear-gradient(180deg,lightblue,yellow); */
+    background: linear-gradient(180deg,rgb(115, 176, 196),rgb(73, 73, 25));
     padding: 50px;
     box-shadow: 2px 2px 5px;
     min-width: 300px;
@@ -95,12 +96,16 @@ p{
 }
 
 .fiveDayContainer {
-    background-color: transparent;
     border-radius: 10px;
     display: flex;
     margin: -11px auto;
     justify-content: space-between;
-  }
+    background: linear-gradient(180deg,rgb(115, 176, 196),rgb(73, 73, 25));
+    padding: 50px;
+    box-shadow: 2px 2px 5px;
+    flex-direction: row;
+    align-items: center;
+}
   
   .WeatherForecast {
     display: flex;
@@ -122,3 +127,8 @@ p{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.46);
   }
   
+
+  .card-title{
+
+    background: rgb(62, 113, 62);
+  }
