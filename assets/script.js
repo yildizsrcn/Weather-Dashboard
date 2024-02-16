@@ -58,7 +58,7 @@ function displayWeatherInfo(data){
 console.log(data);
     const currentDate =new Date(data.dt).toLocaleDateString().split(",")[0]
     console.log(currentDate);
-    const iconUrl =  `http://openweathermap.org/img/wn/${icon}@2x.png`
+    const iconUrl =  `https://api.openweathermap.org/img/w/${data.weather[0].icon}.png`
     const iconImg=`<img src="${iconUrl}" />`
 
     card.textContent ="";
@@ -180,12 +180,19 @@ for(var i=0; i<history.length;i++){
     hbtn.textContent=history[i]
     historySection.appendChild(hbtn)
 
-    hbtn.addEventListener("click",function(event){
+    hbtn.addEventListener("click", async function(event){
         console.log("click");
         event.preventDefault()
         let pastSearch =hbtn.textContent
         console.log(pastSearch);
-        getWeatherData(pastSearch)
+        try {
+            const weatherData = await getWeatherData(pastSearch);
+            displayWeatherInfo(weatherData);  
+        } catch (error) {
+            console.error(error);
+            displayError(error.message);
+        }
+   
     })
 }
 }
