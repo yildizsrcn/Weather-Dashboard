@@ -24,6 +24,8 @@ const formInput = document.querySelector(".formInput")
 const searchInput =document.querySelector("#search-input")
 const card = document.querySelector(".card")
 const apiKey = "37de0b482272503a256fd01e7d37cfeb"
+const fiveDayContainer = document.querySelector(".fiveDayContainer")
+const historySection = document.querySelector(".history")
 
 todayElement.textContent = dayjs("2024-02-05").toDate();
 
@@ -54,6 +56,8 @@ function displayWeatherInfo(data){
         wind: {speed},
     } =data;
 console.log(data);
+    const currentDate =new Date(data.dt).toLocaleDateString().split(",")[0]
+    console.log(currentDate);
     const iconUrl =  `https://api.openweathermap.org/img/w/${data.weather[0].icon}.png`
     const iconImg=`<img src="${iconUrl}" />`
 
@@ -90,6 +94,55 @@ console.log(data);
     card.appendChild(windSpeedDisplay);
     card.appendChild(descDisplay);
     card.appendChild(weatherIcon);
+
+    const lat = data.coord.lat
+    const lon = data.coord.lon
+
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`)
+    .then(function(response){
+return response.json()
+
+    }).then(function(forecastData){
+
+let fiveDayArray = forecastData.list.filter(day=>day.dt_txt.includes("12:00:00"))
+console.log(fiveDayArray);
+
+let cardBody=""
+for (var i =0; i<fiveDayArray.length;i++){
+    let date=new Date( fiveDayArray[i].dt_txt).toLocaleDateString().split(",")[0]
+    let icon=fiveDayArray[i].weather[0].icon 
+cardBody+= `
+<div class="col-lg-2 col-md- mb-3">
+<div class="card-body">
+    <div class="card-title cardLayout">
+        <h4 class="card-title">
+            <p class="mb-0 weatherDate">${date}</p>
+        </h4>
+        <h4 class="card-title">
+        <img src="http://openweathermap.org/img/wn/${icon}@2x.png"/>
+            <p class="mb-0 weatherIconImage">${fiveDayArray[i].weather[0].description}</p>
+        </h4>
+        <h4 class="card-title">
+            Temp
+            <p class="mb-0 cityFiveTemperature">${fiveDayArray[i].main.temp}</p>
+        </h4>
+        <h4 class="card-title">
+            Wind
+            <p class="mb-0 cityFiveWind">${fiveDayArray[i].wind.speed}</p>
+        </h4>
+        <h4 class="card-title">
+            Humidity
+            <p class="mb-0 cityFiveHumid">${fiveDayArray[i].main.humidity}</p>
+        </h4>
+    </div>
+</div>
+</div>
+`
+console.log(fiveDayContainer);
+fiveDayContainer.innerHTML=cardBody
+}
+    })
+
 }
 
 function getWeatherIcon(weatherId){
@@ -113,10 +166,31 @@ function setDateAndTime() {
     timeEl.text(currentDay.format("h:mm"));
 }
 
+function saveSearch(){
+    const previousSearch = searchInput.value.trim();
+    const history = JSON.parse(localStorage.getItem("history"))||[]
+    history.push(previousSearch)
+    localStorage.setItem("history",JSON.stringify(history))
+    makeButtons(history)
+}
+function makeButtons(history){
+    historySection.innerHTML=""
+for(var i=0; i<history.length;i++){
+    const hbtn =document.createElement("button")
+    hbtn.textContent=history[i]
+    historySection.appendChild(hbtn)
 
+    hbtn.addEventListener("click",function(event){
+        console.log("click");
+        event.preventDefault()
+        let pastSearch =hbtn.textContent
+        console.log(pastSearch);
+        getWeatherData(pastSearch)
+    })
+}
+}
 weatherHeader.addEventListener("click", async function (event){
 
-    console.log("click");
     event.preventDefault();
 
     const city = searchInput.value.trim();
@@ -126,6 +200,8 @@ weatherHeader.addEventListener("click", async function (event){
             const weatherData = await getWeatherData(city);
             console.log(weatherData);
             displayWeatherInfo(weatherData);
+
+            saveSearch()
         }
         catch(error){
             console.error(error);
