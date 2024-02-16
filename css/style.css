@@ -83,7 +83,9 @@ p{
 
 .weatherIcon{
     margin: 0;
-    font-size: 7.5rem;
+    font-size: 32px;
+    width: 50px;
+    height: auto;
 }
 
 .errorDisplay{
@@ -92,3 +94,31 @@ p{
     color: red;
 }
 
+.fiveDayContainer {
+    background-color: transparent;
+    border-radius: 10px;
+    display: flex;
+    margin: -11px auto;
+    justify-content: space-between;
+  }
+  
+  .WeatherForecast {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+  
+  .cardLayout {
+    background-color: #fffbfb;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.46);
+    text-align: center;
+    border: 2px solid #d4d3d3;
+    border-radius: 10px;
+    width: 200px;
+  }
+  
+  .card-body {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.46);
+  }
+  
