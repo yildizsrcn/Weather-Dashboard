@@ -74,7 +74,7 @@ console.log(data);
     weatherIcon.innerHTML = iconImg;
     cityDisplay.textContent =city;
     tempDisplay.textContent = `${(temp -273.15).toFixed(1)}°C`;
-    humidityDisplay.textContent = `Humidity: ${humidity}`;
+    humidityDisplay.textContent = `Humidity: ${humidity}%`;
     windSpeedDisplay.textContent = `Wind: ${speed} km/h`;
     descDisplay.textContent = description;
 
@@ -124,15 +124,15 @@ cardBody+= `
         </h4>
         <h4 class="card-title">
             Temp
-            <p class="mb-0 cityFiveTemperature">${fiveDayArray[i].main.temp}</p>
+            <p class="mb-0 cityFiveTemperature">${fiveDayArray[i].main.temp}°C</p>
         </h4>
         <h4 class="card-title">
             Wind
-            <p class="mb-0 cityFiveWind">${fiveDayArray[i].wind.speed}</p>
+            <p class="mb-0 cityFiveWind">${fiveDayArray[i].wind.speed}km/h</p>
         </h4>
         <h4 class="card-title">
             Humidity
-            <p class="mb-0 cityFiveHumid">${fiveDayArray[i].main.humidity}</p>
+            <p class="mb-0 cityFiveHumid">${fiveDayArray[i].main.humidity}%</p>
         </h4>
     </div>
 </div>
